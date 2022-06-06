@@ -1,0 +1,49 @@
+{
+    "name": "User",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "int"
+        },
+        {
+            "name": "username",
+            "type": "string",
+            "default": "NULL"
+        },
+        {
+            "name": "age",
+            "type": "int",
+            "default": -1
+        },
+        {
+            "name": "address",
+            "type": {
+                "type": "record",
+                "name": "address",
+                "fields": [
+                    {
+                        "name": "district",
+                        "type": "string",
+                        "default": "NULL"
+                    },
+                    {
+                        "name": "province",
+                        "type": "string",
+                        "default": "NULL"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "sex",
+            "type": ["null",
+                {
+                "type": "enum",
+                "name": "sex",
+                "symbols": ["MALE", "FEMALE"]
+                }
+            ]
+        }
+    ]
+}
