@@ -6,6 +6,7 @@ import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
@@ -37,14 +38,31 @@ public class Main {
         dataFileWriter.close();
     }
     public static void deserialize(File file) throws IOException {
-        //TODO to JSON
         DatumReader<User> userDatumReader = new SpecificDatumReader<User>(User.class);
         DataFileReader<User> dataFileReader = new DataFileReader<User>(file, userDatumReader);
         User user = null;
-        while (dataFileReader.hasNext()) {
+
+        // Read the file and return data.json
+        File data = new File("data.json");
+        FileWriter writer = new FileWriter(data);
+        writer.write("{\"users\":[");
+        if(dataFileReader.hasNext()) {
             user = dataFileReader.next(user);
-            System.out.println(user);
+            writer.write(user.toString());
         }
+        while(dataFileReader.hasNext()) {
+            writer.write(",");
+            user = dataFileReader.next(user);
+            writer.write(user.toString());
+        }
+        writer.write("]}");
+        writer.close();
+
+        // print data to console
+//        while (dataFileReader.hasNext()) {
+//            user = dataFileReader.next(user);
+//            System.out.println(user);
+//        }
     }
 
 }

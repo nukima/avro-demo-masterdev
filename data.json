@@ -1,0 +1,1 @@
+{"users":[{"id": 1, "username": "the_first", "age": 16, "address": {"district": "Nam Tu Liem", "province": "Ha Noi"}, "sex": "MALE"},{"id": 2, "username": "the_second", "age": 0, "address": {"district": "Ha Dong", "province": "Ha Noi"}, "sex": null},{"id": 3, "username": "the_third", "age": 18, "address": {"district": "Cau Giay", "province": "Ha Noi"}, "sex": "FEMALE"}]}
